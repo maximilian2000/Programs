@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+unsigned long long int superpermutationLength(int&);
+
+int main(){
+	int digits;
+	cout << "Enter number of digits: ";
+	cin >> digits;
+	cout << "The minimum length of the superpermutation for " << digits << " digits is "
+	     << superpermutationLength(digits) << ".";
+	return 0;
+}
+
+unsigned long long int superpermutationLength(int& digits){
+	int i;
+	int j;
+	unsigned long long int factorial = 0;
+	unsigned long long int length;
+	for (i = 1; i <= digits; i++){
+		for (j = 1; j <= i; j++){
+			factorial = factorial * j;
+		}
+		length += factorial;
+		factorial = 0;
+	}
+	return length;
+}
