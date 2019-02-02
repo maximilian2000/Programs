@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-unsigned long long int superpermutationLength(int&);
+int superpermutationLength(int&);
 
 int main(){
 	int digits;
@@ -11,11 +11,11 @@ int main(){
 	return 0;
 }
 
-unsigned long long int superpermutationLength(int& digits){
+int superpermutationLength(int& digits){
 	int i;
 	int j;
-	unsigned long long int factorial = 0;
-	unsigned long long int length;
+	int factorial = 0;
+	int length;
 	for (i = 1; i <= digits; i++){
 		for (j = 1; j <= i; j++){
 			factorial = factorial * j;
