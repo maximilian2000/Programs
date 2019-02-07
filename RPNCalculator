@@ -1,0 +1,70 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+	string userInput;
+	cout << endl <<"You are using a reverse Polish notation calculator.\n" <<
+	               "Please use spaces between numbers but not after negative sign.\n" <<
+	               "Use spaces between numbers and symbold, except for negatove numbers.\n" <<
+	               "Acceptable inputs: 5 7.5 8 - + || 7 -6 5 - * || 85.7 76 -20 - /\n" <<
+	               "Unacceptable inputs: 7 - 6 5 - * || five 7,5 eight minus plus\n" <<
+	               "Enter end the application, type in END and press enter." << endl << endl;
+    double stack[100];
+    double numbers[20];
+    int numbersArrayLog;
+    char signs[19];
+    int signsArrayLog;
+    bool WSFound;
+    bool firstNumberFound;
+    string numbersHolder;
+    int i;
+    int j;
+    int a;
+    int b = 0;
+    while(userInput != end && userInput != End && userInput != END){
+        // While user input does not equal q --- getline(cin, userInput);
+        // After user inputs q --- numbersArrayLog = 0;
+        // After user inputs q --- signsArrayLog = 0;
+        for (i = 0; i < 20; i++){
+            while (userInput[i] != '+' && userInput[i] != '/' && userInput[i] != '*'){
+            	if (userInput[i] == '-' && userInput[i+1] != ' '){
+                    j = i;
+                    while (WSFound != true){
+                        j++;
+                        if (userInput[j] == ' '){
+                            for (a = i; a < j; a++){
+                                numbersHolder[b] = userInput[a];
+                                b++;
+                            }
+                        }
+                        numbers[numbersArrayLog] = stod(numbersHolder);
+                        numbersHolder = " ";
+                        b = 0;
+                        WSFound = true;
+                    }
+                    i++;
+                }
+                if (userInput[i] == '-' && userInput[i+1] != ' '){
+                    j = i;
+                    while (WSFound != true){
+                        j++;
+                        if (userInput[j] == ' '){
+                            for (a = i; a < j; a++){
+                                numbersHolder[b] = userInput[a];
+                                b++;
+                            }
+                        }
+                        numbers[numbersArrayLog] = stod(numbersHolder);
+                        numbersHolder = " ";
+                        b = 0;
+                        WSFound = true;
+                    }
+                    i++;
+                }
+            }
+        }
+    }
+    return 0;
+}
